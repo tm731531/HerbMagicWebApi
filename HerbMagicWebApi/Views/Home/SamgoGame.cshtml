@@ -1,0 +1,575 @@
+﻿<link data-require="bootstrap@3.3.7" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link data-require="bootstrap-css@3.*" data-semver="3.3.7" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
+<script data-require="angular.js@1.6.5" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script data-require="angular-animate@1.6.*" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
+<script data-require="angular-touch@1.6.*" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-touch.js"></script>
+<script data-require="ui-bootstrap" data-semver="2.5.0" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.5.0.js"></script>
+
+<script src="/Scripts/Samgo/SamgoGameController.js"></script>
+<body ng-controller="SamgoGameController">
+
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">遊戲廳</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav-item  mr-auto">
+                    <li class="dropdown-dropdown" aria-labelledby="navbarDropdown">
+                        <a ng-click="showTable='default'" class="btn-link btn">Home </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            資訊
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a ng-click="switchPage('writeDetail')" class="btn-link btn">個人資料 </a>
+                            <a ng-click="switchPage('showDetail')" class="btn-link btn">資料紀錄 </a>
+                        </div>
+                    </li>
+                    @*<li class="nav-item">
+                            <!--<a class="nav-link" href="#">Link</a>-->
+                            <a ng-click="showTable='aboutSamgoGame'" class="btn btn-link">遊戲廳</a>
+                        </li>*@
+        @*  <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a ng-click="showTable='aboutHistory'" class="btn-link btn">History </a>
+                            <a ng-click="showTable='aboutConnectUs'" class="btn-link btn">Connect us </a>
+                            <a ng-click="showTable='aboutGoogleInfo'" class="btn-link btn">Google Info </a>
+                            <a ng-click="showTable='aboutSamgoGame'" class="btn-link btn">三國志 </a>
+                        </div>
+
+                                        </li>*@
+                </ul>
+                @*<form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" ng-model="searchText" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" ng-click="searchByKeyword(searchText)" type="submit">Search</button>
+                    <input type="button" value="hidden" ng-show="showMore" class="btn" ng-click="showMore=!showMore">
+
+                    <input type="button" value="show" ng-show="!showMore" class="btn" ng-click="showMore=!showMore">
+                </form>*@
+            </div>
+        </nav>
+        <script language="JavaScript" type="text/javascript">
+            function setBeerIcon() {
+                var manIcon = document.getElementById("manIcon");
+                manIcon.src = "../image/SamgoGame/" + document.getElementById("man").value;
+
+
+            }
+        </script>
+
+        <hr>
+        <div class="dropdown show">
+            <table class="table table-bordered rounded-circle  " ng-show="showTable=='writeDetail'">
+                <tr>
+                    <td>
+                        角色資訊
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    角色圖像
+
+
+                                </td>
+                                <td colspan="3">
+                                    <img id="manIcon" width="150" height="150" src="~/image/SamgoGame/girl1b.png" />
+                                    <select id="man" ng-model="reqModel.Pic"
+                                            onChange="setBeerIcon();" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in ImageArray"
+                                                value="{{x.path}}">
+                                            {{x.name}}
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>角色ID</td>
+                                <td><input ng-model="reqModel.Role" ng-keydown="myKeyup($event)"></td>
+                                <td>公會</td>
+                                <td>
+                                
+                                    <select id="man" ng-model="reqModel.Legion"class="btn btn-secondary dropdown-toggle" readonly>
+                                        <option ng-repeat="x in LegionArray"
+                                                value="{{x}}">
+                                            {{x}}
+                                        </option>
+                                    </select>
+@*                                <input ng-model="reqModel.Legion" >*@
+                                </td>
+                                 </tr>
+                            <tr>
+                                <td>戰力
+                                </td>
+                                <td><input ng-model="reqModel.Power"></td>
+                                <td>
+                                  說明
+                                </td>
+                                <td><pre class="text-info">是裸戰 第一隊脫掉兵器的戰力
+                                假設43萬5千 請打435000</pre></td>
+
+                            </tr>
+                            <tr>
+                                <td>VIP</td>
+                                <td>
+                                    <select ng-model="reqModel.Prosperity" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray" value="{{x}}">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>主公等級</td>
+                                <td>
+                                    <select ng-model="reqModel.Lord" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in SuperHighLevelArray" value="{{x}}">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>建築</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>大殿等級</td>
+                                <td>
+                                    <select ng-model="reqModel.Basilica" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray" value="{{x}}">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>技法所</td>
+                                <td>
+                                    <select ng-model="reqModel.Technique" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>黑市</td>
+                                <td>
+                                    <select ng-model="reqModel.Market" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>馬廄</td>
+                                <td>
+                                    <select ng-model="reqModel.Horse" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>太學府</td>
+                                <td>
+                                    <select ng-model="reqModel.School" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>兵營</td>
+                                <td>
+                                    <select ng-model="reqModel.Barracks" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>傷兵營</td>
+                                <td>
+                                    <select ng-model="reqModel.Soldier" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>鑄幣所</td>
+                                <td>
+                                    <select ng-model="reqModel.Coin" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                @*<td>民房</td>
+                                <td>
+                                    <select ng-model="reqModel.House" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>伐木場</td>
+                                <td>
+                                    <select ng-model="reqModel.Wood" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>採石場</td>
+                                <td>
+                                    <select ng-model="reqModel.Stone" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>*@
+                            </tr>
+                            <tr>
+
+                                <td>藏寶閤</td>
+                                <td>
+                                    <select ng-model="reqModel.Treasure" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>軍械所</td>
+                                <td>
+                                    <select ng-model="reqModel.Ordnance" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>城牆</td>
+                                <td>
+                                    <select ng-model="reqModel.Wall" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                @*<td>鐵礦</td>
+                                <td>
+                                    <select ng-model="reqModel.Iron" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>農田</td>
+                                <td>
+                                    <select ng-model="reqModel.Farmland" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>*@
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>技法等級</td>
+                    <td>
+                        <table>
+                            @*<tr>
+                                <td>加速糧食</td>
+                                <td>
+                                    <select ng-model="reqModel.FoodUp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>加速石材</td>
+                                <td>
+                                    <select ng-model="reqModel.StoneUp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>加速木材</td>
+                                <td>
+                                    <select ng-model="reqModel.WoodUp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>加速鐵礦</td>
+                                <td>
+                                    <select ng-model="reqModel.IronUp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>*@
+                            <tr>
+                                <td>前排攻擊</td>
+                                <td>
+                                    <select ng-model="reqModel.FrontAttack" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>後排攻擊</td>
+                                <td>
+                                    <select ng-model="reqModel.BackAttack" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>前排防禦</td>
+                                <td>
+                                    <select ng-model="reqModel.FrontDefense" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>後排防禦</td>
+                                <td>
+                                    <select ng-model="reqModel.BackDefense" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                @*<td>增強防護</td>
+                                <td>
+                                    <select ng-model="reqModel.EnhancedProtection" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>增強掠奪</td>
+                                <td>
+                                    <select ng-model="reqModel.EnhancedPlunder" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>*@
+                                <td>武藝</td>
+                                <td>
+                                    <select ng-model="reqModel.MartialArts" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>厚黑</td>
+                                <td>
+                                    <select ng-model="reqModel.ThickBlack" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>兵法</td>
+                                <td>
+                                    <select ng-model="reqModel.WarArt" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>士卒訓練</td>
+                                <td>
+                                    <select ng-model="reqModel.Judge" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                @*<td>箭樓</td>
+                                <td>
+                                    <select ng-model="reqModel.ArrowBuild" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>拒馬</td>
+                                <td>
+                                    <select ng-model="reqModel.RefuseHorse" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>城牆</td>
+                                <td>
+                                    <select ng-model="reqModel.WallUp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>*@
+                                <td>英勇</td>
+                                <td>
+                                    <select ng-model="reqModel.heroic" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>詭道</td>
+                                <td>
+                                    <select ng-model="reqModel.Ramp" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>堅毅</td>
+                                <td>
+                                    <select ng-model="reqModel.Perseverance" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>洞察</td>
+                                <td>
+                                    <select ng-model="reqModel.Insight" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                @*<td>快速重建</td>
+                                <td>
+                                    <select ng-model="reqModel.Reconstruction" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>*@
+
+                                <td>爆擊</td>
+                                <td>
+                                    <select ng-model="reqModel.CriticalStrike" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>韌性</td>
+                                <td>
+                                    <select ng-model="reqModel.Toughness" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in LevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>軍械等級</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>投石車</td>
+                                <td>
+                                    <select ng-model="reqModel.Catapult" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>盾車</td>
+                                <td>
+                                    <select ng-model="reqModel.ShieldCar" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>井欄</td>
+                                <td>
+                                    <select ng-model="reqModel.Well" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                                <td>戰鼓</td>
+                                <td>
+                                    <select ng-model="reqModel.Drum" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>木牛流馬</td>
+                                <td>
+                                    <select ng-model="reqModel.WoodenCow" class="btn btn-secondary dropdown-toggle">
+                                        <option ng-repeat="x in HighLevelArray">{{x}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" class="btn btn-success" value="送出" ng-click="send_user_data()" />
+                         @*<input type="button" class="btn btn-success" value="測試" ng-click="test()" />*@
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='showDetail'">
+            <tr>
+                <th>編號</th>
+                <th>ID</th>
+                <th>戰力</th>
+                <th>主公等級</th>
+                <th>主城等級</th>
+                <th>日期</th>
+            </tr>
+            <tbody>
+                @*<tr ng-repeat="userInfo in userInfoList" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">*@
+                <tr ng-repeat="userInfo in userInfoList">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{userInfo.Role}}</div></td>
+                    <td><div>{{userInfo.Power}}</div></td>
+                    <td><div>{{userInfo.Lord}}</div></td>
+                    <td><div>{{userInfo.Basilica}}</div></td>
+                    <td><div>{{userInfo.Time|date: 'yyyy-MM-dd'}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        @*<nav class="container-fluid">
+                <ul class="pagination">
+                    <li>
+                        <a ng-click="Previous()">
+                            <span>上一頁</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+                        <a ng-click="selectPage(page)">{{ page }}</a>
+                    </li>
+                    <li>
+                        <a ng-click="Next()">
+                            <span>下一頁</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>*@
+        <table class="table table-bordered rounded-circle  " ng-show="showTable=='aboutSamgoGame'">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>腳色</th>
+                    <th>第二次戰力</th>
+                    <th>第一次戰力</th>
+                    <th>差異</th>
+                    <th>軍團</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="SamgoPower in SamgoPowers" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+
+                    <td><div>{{ $index+1}}</div></td>
+                    <td><div>{{ SamgoPower.Role}}</div></td>
+                    <td><div>{{ SamgoPower.SecondPower}}</div></td>
+                    <td><div>{{ SamgoPower.FirstPower}}</div></td>
+                    <td><div>{{ SamgoPower.Diff}}</div></td>
+                    <td><div>{{ SamgoPower.Legion}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <script>
+        $("#lightSlider").lightSlider({
+            //gallery: true, // 相本模式
+            //item: 1, // 顯示數量
+            //loop: true, // 無限循環
+            //thumbItem: 6, // 縮圖數量
+            //slideMargin: 0, // 間隔寬度
+            //enableDrag: false // 當左右拖曳時，則切換上/下項目
+
+            slideWidth: 400, // 物件寬度
+            speed: 1000, // 切換速度
+            pause: 4000, // 當等待時間超過此時，則自動切換
+            auto: true, // 自動切換
+            item: 4, // 顯示數量
+            responsive: [
+                {
+                    breakpoint: 960, // 當螢幕大於此寬度時，則啟用此設定值
+                    settings: {
+                        item: 2, // 顯示數量
+                        slideMove: 1 // 一次切換數量
+                    }
+                },
+                {
+                    breakpoint: 640, // 當螢幕大於此寬度時，則啟用此設定值
+                    settings: {
+                        item: 1, // 顯示張數
+                        slideMove: 1 // 一次切換數量
+                    }
+                }
+            ]
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+
+</body>

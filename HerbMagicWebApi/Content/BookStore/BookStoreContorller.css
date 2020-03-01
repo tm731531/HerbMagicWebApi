@@ -1,0 +1,30 @@
+﻿.ngEven {
+    background: lightgreen;
+}
+
+.ngOdd {
+    background: lightblue;
+}
+
+.ngModify {
+    background: Highlight;
+}
+.demo {
+    width:800px;
+}
+ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta charset="utf-8">
+    <meta name="description" content="iSelect3C">
+    <meta name="author" content="Tom Carter Dirk">
+    <title>iSelect3C</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link rel="shortcut icon" href="/Home.ico">
+    <!-- style -->
+    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
+    <link href="~/Content/iSelect3C/CSS/style.css" rel="stylesheet" />
+    <!-- bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- responsive -->
+    <link href="~/Content/iSelect3C/CSS/responsive.css" rel="stylesheet" />
+    <!-- font-awesome -->
+    <link href="~/Content/iSelect3C/CSS/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/iSelect3C/CSS/Effects/set2.css" rel="stylesheet" />
+    <link href="~/Content/iSelect3C/CSS/Effects/normalize.css" rel="stylesheet" />
+    <link href="~/Content/iSelect3C/CSS/Effects/component.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- header -->
+    <header role="header">
+        <div class="container">
+            <div class="row">
+                <!-- logo -->
+                <div class="col-md-3 col-xs-
+                     ">
+                    <h1>
+                        <a href="" title="iSelect3C"><img src="~/image/iSelect3C/logo.png" title="iSelect3C" alt="iSelect3C" /></a>
+                    </h1>
+                </div>
+                <!-- logo -->
+                <!-- nav -->
+                <div class="col-md-2 col-xs-4 pull-right">
+                    <nav role="header-nav" class="navy">
+                        <ul>
+                            <li id="herader_nav iSelect" class="nav-active"><a href="index.html" title="iSelect">iSelect</a></li>
+                            <li id="herader_nav_3CNews"><a href="about.html" title="大話3C">大話3C</a></li>
+                            <li id="herader_nav_Apply3C"><a href="blog.html" title="申請3C">申請3C</a></li>
+                            <li id="herader_nav_PriceTrend"><a href="contact.html" title="價格走勢">價格走勢</a></li>
+                            <li id="herader_nav_Contact"><a href="contact.html" title="聯繫開發者聯盟">聯繫開發者聯盟</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- nav -->
+            </div>
+        </div>
+    </header>
+    <!-- header -->
+    @RenderBody()
+    <!-- footer -->
+    <footer role="footer">
+        <!-- nav -->
+        <nav role="footer-nav">
+            <ul>
+                <li id="footer_nav_iSelect"><a href="index.html" title="iSelect">iSelect</a></li>
+                <li id="footer_nav_3CNews"><a href="about.html" title="大話3C">大話3C</a></li>
+                <li id="footer_nav_Apply3C"><a href="blog.html" title="申請3C">申請3C</a></li>
+                <li id="footer_nav_PriceTrend"><a href="contact.html" title="價格走勢">價格走勢</a></li>
+                <li id="footer_nav_Contact"><a href="contact.html" title="聯繫開發者聯盟">聯繫開發者聯盟</a></li>
+            </ul>
+        </nav>
+        <!-- nav -->
+        <ul role="social-icons">
+
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+            <li><a href="#"><i class="fa fa-flickr" aria-hidden="true"></i></a></li>
+
+        </ul>
+        <p class="copy-right">&copy; @DateTime.Now.ToString("yyyy-MM-dd ")- iSelect3C PoweredBy <i class="fa fa-love"></i><a href="#"> Tom, JiaSyuan, Carter</a></p>
+
+
+    </footer>
+
+    <!-- footer -->
+    <!-- custom -->
+    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <script>
+        [].forEach.call(document.getElementsByClassName('mvc-grid'), function (element) {
+            new MvcGrid(element);
+        });
+    </script>
+    <script src="~/Scripts/iSelect3C/custom.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/iSelect3C/Effects/masonry.pkgd.min.js"></script>
+    <script src="~/Scripts/iSelect3C/Effects/imagesloaded.js"></script>
+    <script src="~/Scripts/iSelect3C/Effects/classie.js"></script>
+    <script src="~/Scripts/iSelect3C/Effects/modernizr.custom.js"></script>
+    <script src="~/Scripts/iSelect3C/Effects/AnimOnScroll.js"></script>
+    <script src="~/Scripts/iSelect3C/nav.js"></script>
+    <!-- jquery.countdown -->
+    <script src="~/Scripts/iSelect3C/html5shiv.js"></script>
+</body>
+</html>
+

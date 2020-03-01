@@ -1,0 +1,241 @@
+﻿@using NonFactors.Mvc.Grid;
+@{
+    Layout = "../Shared/_ISelect3CLayout.cshtml";
+    ViewBag.Title = "iSelect3C";
+}
+
+<!-- main -->
+<main role="main-home-wrapper" class="container">
+    <div class="row">
+        <nav id="NavBar">
+            <ul>
+                <!--DropDownList-->
+                <li>
+                    <div class="msFont">
+                        <span>節能品項:</span> @Html.DropDownList("DropDown_KeyWord", (IEnumerable<SelectListItem>)ViewBag.Item, new { id = "KeyWordDropDownList" })
+                    </div>
+                </li>
+                <!--DropDownList-->
+            </ul>
+            <ul class="links">
+                <li class="active"><a href="#MixTabPane" data-toggle="tab">iSelect整合資料</a></li>
+                <li><a href="#GovTabPane" data-toggle="tab">政府開放資料</a></li>
+                <li><a href="#MallTabPane" data-toggle="tab">電商平台資料</a></li>
+            </ul>
+        </nav>
+        <div id="Tab" class="tab-content">
+            <!--Mix-->
+            <div class="tab-pane fade in active" id="MixTabPane">
+                <section class="col-xs-12 col-sm-8 col-md-6 col-lg-8 ">
+                    <article role="pge-title-content">
+                        <header>
+                            <h2><span>iSelect整合資料</span></h2>
+                        </header>
+                        <p>
+                            <div class="widget-header msFont" id="MixData">
+                                <span id="MixSpan"></span>
+                            </div>
+                        </p>
+                    </article>
+                </section>
+                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 grid">
+
+                    <figure class="effect-oscar">
+
+                        <img src="images/home-images/image-1.jpg" alt="" class="img-responsive" />
+
+                        <figcaption>
+
+                            <h2>Eliana Dedda<span> Identity</span></h2>
+
+                            <p>Personal Brand Identity.</p>
+
+                            <a href="works-details.html">View more</a>
+
+                        </figcaption>
+
+                    </figure>
+
+                </section>
+                <div class="clearfix"></div>
+                <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12 grid">
+                    <ul class="grid-lod effect-2" id="grid">
+                        <div id="MixDataGrid">
+                            @Html.AjaxGrid(Url.Action("MixDataGrid", "ISelect3C"), new { id = "MixData-ajax-grid" })
+                        </div>
+                    </ul>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <!--Mix-->
+            <!--Gov-->
+            <div id="GovTabPane" class="tab-pane fade">
+                <section class="col-xs-12 col-sm-8 col-md-6 col-lg-8 ">
+                    <article role="pge-title-content">
+                        <header>
+                            <h2><span>政府開放資料</span></h2>
+                        </header>
+                        <p>
+                            <div class="widget-header msFont" id="GovData">
+                                <span id="GovSpan"></span>
+                            </div>
+                        </p>
+                    </article>
+                </section>
+                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 grid">
+                    <figure class="effect-oscar">
+
+                        <img src="images/home-images/image-1.jpg" alt="" class="img-responsive" />
+                        <figcaption>
+                            <h2>Eliana Dedda<span> Identity</span></h2>
+
+                            <p>Personal Brand Identity.</p>
+
+                            <a href="works-details.html">View more</a>
+                        </figcaption>
+
+                    </figure>
+
+                </section>
+                <div class="clearfix"></div>
+                <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12 grid">
+                    <ul class="grid-lod effect-2" id="grid">
+                        <div id="GovDataGrid">
+                            @Html.AjaxGrid(Url.Action("GovDataGrid", "ISelect3C"), new { id = "GovData-ajax-grid" })
+                        </div>
+                    </ul>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <!--Gov-->
+            <!--Mall-->
+            <div id="MallTabPane" class="tab-pane fade">
+                <section class="col-xs-12 col-sm-8 col-md-6 col-lg-8 ">
+                    <article role="pge-title-content">
+                        <header>
+                            <h2><span>電商平台資料</span></h2>
+                        </header>
+                        <p>
+                            <div class="widget-header msFont" id="MallData">
+                                <span id="MallSpan"></span>
+                            </div>
+                        </p>
+                    </article>
+                </section>
+                <section class="col-xs-12 col-sm-4 col-md-4 col-lg-4 grid">
+
+                    <figure class="effect-oscar">
+
+                        <img src="images/home-images/image-1.jpg" alt="" class="img-responsive" />
+
+                        <figcaption>
+
+                            <h2>Eliana Dedda<span> Identity</span></h2>
+
+                            <p>Personal Brand Identity.</p>
+
+                            <a href="works-details.html">View more</a>
+
+                        </figcaption>
+
+                    </figure>
+
+                </section>
+                <div class="clearfix"></div>
+                <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12 grid">
+                    <ul class="grid-lod effect-2" id="grid">
+                        <div id="MallDataGrid">
+                            @Html.AjaxGrid(Url.Action("MallDataGrid", "ISelect3C"), new { id = "MallData-ajax-grid" })
+                        </div>
+                    </ul>
+                </section>
+                <div class="clearfix"></div>
+            </div>
+            <!--Mall-->
+        </div>
+    </div>
+</main>
+<!-- main -->
+<script>
+    $("#KeyWordDropDownList").change(function () {
+        var keyWord = $("#KeyWordDropDownList").val();
+        var gridMixData = new MvcGrid(document.getElementById('MixData-ajax-grid'));
+        gridMixData.requestType = 'get';
+        gridMixData.query.set('keyWord', keyWord);
+        gridMixData.reload();
+        var gridGovData = new MvcGrid(document.getElementById('GovData-ajax-grid'));
+        gridGovData.requestType = 'get';
+        gridGovData.query.set('keyWord', keyWord);
+        gridGovData.reload();
+        var gridMallData = new MvcGrid(document.getElementById('MallData-ajax-grid'));
+        gridMallData.requestType = 'get';
+        gridMallData.query.set('keyWord', keyWord);
+        gridMallData.reload();
+        ShowSpan();
+    });
+
+    $("#MallData").click(function () {
+        $('#MallData-ajax-grid').each(function () {
+            $("#MallDataGrid").slideToggle("slow");
+        });
+    });
+
+    $("#GovData").click(function () {
+        $('#GovData-ajax-grid').each(function () {
+            $("#GovDataGrid").slideToggle("slow");
+        });
+    });
+
+    $("#MixData").click(function () {
+        $('#MixData-ajax-grid').each(function () {
+            $("#MixDataGrid").slideToggle("slow");
+        });
+    });
+
+    $(document).on("click", ".clickModel", function (event) {
+        //);
+
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetDetail", "ISelect3C")',
+            data: {
+                keyWord: $("#KeyWordDropDownList").val(),
+                productModel: event.target.innerText
+            },
+            dataType: "Text",
+
+        }).done(function (result) {
+            $('#dialog').html(result);
+            $('#ModalCenter').modal('toggle');
+        });
+    });
+    $(document).ready(function () {
+        ShowSpan();
+    });
+    function ShowSpan() {
+        var keyWord = $("#KeyWordDropDownList").val();
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("GetSelect3CDataNumber", "MixGovData")/' + keyWord,
+            dataType: "json",
+            success: function (response) {
+                var MixCount = response.MixDataNumber;
+                var GovCount = response.GovDataNumber;
+                var MallCount = response.MallDataNumber;
+                var GovInMix = toPercent(MixCount / GovCount);
+                var MallInMix = toPercent(MixCount / MallCount);
+                $('#MixSpan').text('共  ' + MixCount + '筆    佔政府資料  ' + GovInMix + '       佔電商平台資料   ' + MallInMix);
+                $('#GovSpan').text('共  ' + GovCount + '筆');
+                $('#MallSpan').text('共  ' + MallCount + '筆');
+            }
+        })
+    }
+    function toPercent(point) {
+        var str = Number(point * 100).toFixed(2);
+        str += "%";
+        return str;
+    }
+</script>
+<div id="dialog" class="bolded">
+
+</div>

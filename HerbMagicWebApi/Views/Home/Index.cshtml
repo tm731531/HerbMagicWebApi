@@ -1,0 +1,415 @@
+﻿
+<script src="/Scripts/BookStore/BookStoreController.js"></script>
+<body ng-controller="BookListController">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" ng-show="showTable!='aboutSamgoGame'">公長有限公司</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a ng-click="showTable='default'" class="nav-link"  >
+                            Home 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!--<a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="showTable='book'" class="btn btn-link">小丁書房</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--<a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="goAPIList()" class="btn-link btn">API List </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="showTable='history'" class="btn-link btn">改版紀錄 </a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bank
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!--     <a class="dropdown-item" href="#">Action</a>-->
+                            <a ng-click="showTable='exchangeRate'" class="btn-link btn">匯率 </a>
+                            <!--<a class="dropdown-item" href="#">Another action</a>-->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item disabled" href="#">匯率圖表</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a ng-click="showTable='aboutHistory'" class="btn-link btn">History </a>
+                            <a ng-click="showTable='aboutConnectUs'" class="btn-link btn">Connect us </a>
+                            <a ng-click="showTable='aboutGoogleInfo'" class="btn-link btn">Google Info </a>
+                        </div>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            其他
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a ng-click="showTable='boardGame'" class="btn-link btn">桌游 </a>
+                        </div>
+
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>*@
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" ng-model="searchText" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" ng-click="searchByKeyword(searchText)" type="submit">Search</button>
+                    <input type="button" value="hidden" ng-show="showMore" class="btn" ng-click="showMore=!showMore">
+
+                    <input type="button" value="show" ng-show="!showMore" class="btn" ng-click="showMore=!showMore">
+                </form>
+            </div>
+        </nav>
+
+        <hr>
+
+        <nav  class="container-fluid">
+            <ul class="pagination">
+                <li>
+                    <a ng-click="Previous()">
+                        <span>上一頁</span>
+                    </a>
+                </li>
+                <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+                    <a ng-click="selectPage(page)">{{ page }}</a>
+                </li>
+                <li>
+                    <a ng-click="Next()">
+                        <span>下一頁</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='history'">
+            <tr>
+                <th>改版歷史</th>
+                <th>改版敘述</th>
+                <th>改版人</th>
+                <th>日期</th>
+                <th>版本號</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="history in itemList" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{history.Description}}</div></td>
+                    <td><div>{{history.ID}}</div></td>
+                    <td><div>{{history.Date | date : 'yyyy-MM-dd'}}</div></td>
+                    <td><div>{{history.Version}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='exchangeRate'">
+            <tr>
+                <th></th>
+                <th>貨幣</th>
+                <th>現金買入</th>
+                <th>現金賣出</th>
+                <th>即期買入</th>
+                <th>即期賣出</th>
+                <th>銀行</th>
+                <th>銀行代碼</th>
+                <th>日期</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="exchangeRate in itemList" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{exchangeRate.Currency}}</div></td>
+                    <td><div>{{exchangeRate.CashExchangeRateBuys}}</div></td>
+                    <td><div>{{exchangeRate.CashExchangeRateSells}}</div></td>
+                    <td><div>{{exchangeRate.SpotExchangeRateBuys}}</div></td>
+                    <td><div>{{exchangeRate.SpotExchangeRateSells}}</div></td>
+                    <td><div>{{exchangeRate.Bank}}</div></td>
+                    <td><div>{{exchangeRate.BankCode}}</div></td>
+                    <td><div>{{exchangeRate.Date |date: 'yyyy-MM-dd'}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='book'">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th ng-show="showMore">SeqNo</th>
+                    <th>index</th>
+                    <th>BookName</th>
+                    <th>Author</th>
+                    <th ng-show="showMore">Translator</th>
+                    <th>Publisher</th>
+                    <th ng-show="showMore">PublicationDate</th>
+                    <th>Language</th>
+                    <th ng-show="showMore">Pricing</th>
+                    <th ng-show="showMore">Currency</th>
+                    <th ng-show="showMore">Location</th>
+                    <th ng-show="showMore">Status</th>
+                    <th ng-show="showMore">StartDate</th>
+                    <th ng-show="showMore">EndDate</th>
+                    <th ng-show="showMore">Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class="'ngModify'">
+
+                    <td><input type="button" value="+" class="btn" ng-click="addData(inputData)"></td>
+                    <td ng-show="showMore"></td>
+                    <td></td>
+                    <td><input type="text" size="10" ng-model="inputData.BookName"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Author"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Translator"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Publisher"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.PublicationDate"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Language" ng-keydown="myKeyup($event)"></td>
+                    <td ng-show="showMore"><input type="number" size="10" ng-model="inputData.Pricing"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Currency"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Location"></td>
+                    <td ng-show="showMore"><input type="checkbox" size="1" ng-model="inputData.Status"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.StartDate"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.EndDate"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Owner"></td>
+
+                </tr>
+                <tr ng-repeat="book in itemList" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+
+                    <td>
+                        <input type="button" ng-show="book.editMode" value="Done" class="btn" ng-click="editData(book)">
+                        <input type="image" src="/image/eye.png" onMouseOver="this.className = 'btn btn-info';" onMouseOut="this.className='btn';" class="btn" ng-click="goEditMode(book)">
+                        <input type="button" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" value="-" class="btn btn-danger" ng-click="deleteData(book)">
+
+                    </td>
+                    <td ng-show="showMore"><div>{{ book.SeqNo}}</div></td>
+                    <td>{{$index+1}}</td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.BookName">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.BookName}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Author">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Author}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Translator">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Translator}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Publisher">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Publisher}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.PublicationDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.PublicationDate| date:'yyyy-MM-dd'}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Language">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Language}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="number" size="10" ng-model="book.Pricing">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Pricing}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Currency">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Currency}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Location">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Location}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="checkbox" ng-model="book.Status">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Status}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.StartDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.StartDate|date:'MM/dd/yyyy  h:mma'}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.EndDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.EndDate|date:'MM/dd/yyyy  h:mma'}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Owner">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Owner}}</div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+      
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='boardGame'">
+            <tr>
+                <th>桌游</th>
+                <th>名稱</th>
+                <th>繁體名</th>
+                <th>類型</th>
+                <th>價格</th>
+                <th>人數</th>
+                <th>時間</th>
+                <th>加入日期</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="boardGame in itemList" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{boardGame.GameName}}</div></td>
+                    <td><div>{{boardGame.Description}}</div></td>
+                    <td><div>{{boardGame.Type}}</div></td>
+                    <td><div>{{boardGame.Price}} {{boardGame.Currency}}</div></td>
+                    <td><div>{{boardGame.People}}</div></td>
+                    <td><div>{{boardGame.TotalTime}}</div></td>
+                    <td><div>{{boardGame.Date | date : 'yyyy-MM-dd'}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered rounded-circle  " ng-show="showTable=='aboutSamgoGame'">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>腳色</th>
+                    <th>官職</th>
+                    <th>軍團</th>
+                    <th>戰力</th>
+                    <th>時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="SamgoPower in SamgoPowers" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+
+                    <td><div>{{ $index+1}}</div></td>
+                    <td><div>{{ SamgoPower.Role}}</div></td>
+                    <td><div>{{ SamgoPower.Official}}</div></td>
+                    <td><div>{{ SamgoPower.Legion}}</div></td>
+                    <td><div>{{ SamgoPower.Power}}</div></td>
+                    <td><div>{{ SamgoPower.Time | date : 'yyyy-MM-dd'}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div ng-if="showTable=='aboutHistory'">
+            <pre>
+            這個網頁 只是想把過去學的一些做一個整合 不是單純放在GITHUB ，而是讓他以一個活的專案放著
+            目前就是一個很簡單的ANGULAR+ MVCAPI再加上AZURE空間形成的APISERVER
+            目前同時進行一個PYTHON 的API還有使用crontab去做的爬蟲並且搭配演算法
+            </pre>
+        </div>
+        <div ng-if="showTable=='aboutConnectUs'">
+
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="col">Phone</div>
+                <div class="col">0911578345</div>
+                <div class="w-100"></div>
+                <div class="col">Line</div>
+                <!--<div class="col"><iframe src="https://line.me/ti/p/yimuuM0iZh"></iframe></div>-->
+                <div class="col"><img src="../image/Qrcode/Line.jpg" /></div>
+                <div class="w-100"></div>
+                <div class="col">Wechat</div>
+                <!--<div class="col"><iframe src="https://u.wechat.com/IBWdGg-iDV-aDGAJFLDzeKI"></iframe></div>-->
+                <div class="col"><img src="../image/Qrcode/Wechat.jpg" /></div>
+                <div class="w-100"></div>
+                <div class="col">My info</div>
+                <div class="col"></div>
+                <div class="col"><img src="../image/Qrcode/MyInfo.png" /></div>
+            </div>
+        </div>
+        <div ng-if="showTable=='aboutGoogleInfo'">
+
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="col">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.5635927867347!2d121.45620751369853!3d24.98095838399719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346802c5eab90b17%3A0xf8d0af12e17ecd1e!2zMjM25paw5YyX5biC5Zyf5Z-O5Y2A5riF5rC06LevOTjlt7cz5byEMjfomZ81!5e0!3m2!1szh-TW!2stw!4v1546051602338" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="col">新北市土城區清水路98巷3弄27號5樓</div>
+            </div>
+
+        </div>
+        <div  class="demo"  ng-show="showTable=='default'">
+             <ul id="lightSlider" >
+                 <li ng-repeat="margee in Margees" data-thumb="{{margee.image}}">
+                     <a href="{{margee.href}}">
+                         <img  width="800px;" src="{{margee.image}}" />
+                     </a>
+                 </li>
+               
+            </ul>
+        </div>
+    </div>  
+   
+
+    <script>
+        $("#lightSlider").lightSlider({
+  		//gallery: true, // 相本模式
+  		//item: 1, // 顯示數量
+  		//loop: true, // 無限循環
+  		//thumbItem: 6, // 縮圖數量
+  		//slideMargin: 0, // 間隔寬度
+  		//enableDrag: false // 當左右拖曳時，則切換上/下項目
+
+        slideWidth: 400, // 物件寬度
+        speed: 1000, // 切換速度
+        pause: 4000, // 當等待時間超過此時，則自動切換
+        auto: true, // 自動切換
+        item: 4, // 顯示數量
+        responsive : [ 
+  			{
+  			    breakpoint: 960, // 當螢幕大於此寬度時，則啟用此設定值
+  			    settings: {
+  			        item: 2, // 顯示數量
+  			        slideMove: 1 // 一次切換數量
+  			    }
+  			},
+  			{
+  			    breakpoint: 640, // 當螢幕大於此寬度時，則啟用此設定值
+  			    settings: {
+  			        item: 1, // 顯示張數
+  			        slideMove: 1 // 一次切換數量
+  			    }
+  			}
+        ]
+  	});
+    </script>
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+
+</body>

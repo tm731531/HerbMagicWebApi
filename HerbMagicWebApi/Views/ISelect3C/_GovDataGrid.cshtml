@@ -1,0 +1,28 @@
+﻿@model IEnumerable<HerbMagicWebApi.Models.GovDataModels>
+@(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add(model => model.product_model).Titled("型號");
+            columns.Add(model => model.brand_name).Titled("品牌");
+            columns.Add(model => model.labeling_company).Titled("廠商");
+            
+            columns.Add(model => model.test_report_of_energy_efficiency).Titled("測試報告能源效率").Encoded(false).Sortable(false).Filterable(false);
+            columns.Add(model => model.efficiency_rating).Titled("能源效率等級");
+            columns.Add(model => model.efficiency_benchmark).Titled("最低能源效率基準");
+            columns.Add(model => model.annual_power_consumption_degrees_dive_year).Titled("年耗電量(度/年)");
+            columns.Add(model => "<a href='"+ model.detailUri + "'target='_blank'><img src ='/Content/eco.png' /></a>").Titled("詳細訊息").Encoded(false).Filterable(false).Sortable(false);
+        })
+        .Empty("No data found")
+        .Id("GovData-ajax-grid")
+        .Pageable(pager =>
+        {
+            pager.PagesToDisplay = 10;
+            pager.RowsPerPage = 8;
+        })
+        .Filterable()
+        .Sortable()
+        .Css("bolded msFont")
+        //.WithFooter("__GovGridFooter")
+)
+

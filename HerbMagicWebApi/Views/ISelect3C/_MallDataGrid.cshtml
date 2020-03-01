@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HerbMagicWebApi.Models.PchomePriceModels>
+@(
+
+Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Name).Titled("名稱");
+        columns.Add(model => model.data_from).Titled("購物網站");
+        columns.Add(model => model.Price).Titled("價格");
+        columns.Add(model => model.PictrueA).Titled("圖片").Encoded(false).Sortable(false).Filterable(false);
+    })
+    .Empty("No data found")
+    .Id("MallData-ajax-grid")
+    .Pageable(pager =>
+    {
+        pager.PagesToDisplay = 10;
+        pager.RowsPerPage = 8;
+    })
+    .Filterable()
+    .Sortable()
+    .Css("bolded msFont")
+    //.WithFooter("__MallGridFooter")
+)

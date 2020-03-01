@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html ng-app="BookApp">
+<head>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <link rel="shortcut icon" href="../Home.ico">
+    <link rel="stylesheet" href="../Content/bootstrap.min.css">
+    <link rel="stylesheet" href="../Content/BookStore/BookStoreContorller.css">
+    <title>小丁工具箱</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/BookStore/BookStoreController.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="../Scripts/bootstrap.min.js"></script>
+</head>
+<body ng-controller="BookListController">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">公長有限公司</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Home <span class="sr-only">
+                                (current)
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!--<a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="showTable='book'" class="btn btn-link">小丁書房</a>
+                    </li>
+                    <li class="nav-item">
+                        <!--<a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="goAPIList()" class="btn-link btn">API List </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- <a class="nav-link" href="#">Link</a>-->
+                        <a ng-click="showTable='history'" class="btn-link btn">改版紀錄 </a>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bank
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!--     <a class="dropdown-item" href="#">Action</a>-->
+                            <a ng-click="showTable='exchangeRate'" class="btn-link btn">匯率 </a>
+                            <!--<a class="dropdown-item" href="#">Another action</a>-->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item disabled" href="#">匯率圖表</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a ng-click="showTable='aboutHistory'" class="btn-link btn">History </a>
+                            <a ng-click="showTable='aboutConnectUs'" class="btn-link btn">Connect us </a>
+                            <a ng-click="showTable='aboutGoogleInfo'" class="btn-link btn">Google Info </a>
+                            <a ng-click="showTable='aboutSamgoGame'" class="btn-link btn">Samgo </a>
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" ng-model="searchText" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" ng-click="searchByKeyword(searchText)" type="submit">Search</button>
+                    <input type="button" value="hidden" ng-show="showMore" class="btn" ng-click="showMore=!showMore">
+
+                    <input type="button" value="show" ng-show="!showMore" class="btn" ng-click="showMore=!showMore">
+                </form>
+            </div>
+        </nav>
+
+        <!--<div  data-role="navbar">
+            <ul id="menu" class="container">
+                <li><div ng-click="showMainTable=!showMainTable" class="btn btn-link">小丁書房</div></li>
+                <li><div ng-click="goAPIList()" class="btn-link btn">API List </div></li>
+                <li><div ng-click="showHistory=!showHistory" class="btn-link btn">改版紀錄 </div></li>
+                <li>
+                    <div>銀行</div>
+                    <ul>
+                        <li><div ng-click="showExchangeRate=!showExchangeRate" class="btn-link btn">匯率 </div></li>
+                        <li><a>Car Hifi</a></li>
+                        <li><a>Utilities</a></li>
+                    </ul>
+                </li>
+                <li><div>Movies</div></li>
+                <li>
+                    <div>Music</div>
+                    <ul>
+                        <li>
+                            <div>Rock</div>
+                            <ul>
+                                <li><div>Alternative</div></li>
+                                <li><div>Classic</div></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div>Jazz</div>
+                            <ul>
+                                <li><div>Freejazz</div></li>
+                                <li><div>Big Band</div></li>
+                                <li><div>Modern</div></li>
+                            </ul>
+                        </li>
+                        <li><div>Pop</div></li>
+                    </ul>
+                </li>
+                <li class="ui-state-disabled"><div>Specials (n/a)</div></li>
+            </ul>
+        </div>-->
+        <hr>
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='history'">
+            <tr>
+                <th>改版歷史</th>
+                <th>改版敘述</th>
+                <th>改版人</th>
+                <th>日期</th>
+                <th>版本號</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="history in Historys" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{history.Description}}</div></td>
+                    <td><div>{{history.ID}}</div></td>
+                    <td><div>{{history.Date | date : 'yyyy-MM-dd'}}</div></td>
+                    <td><div>{{history.Version}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered rounded-circle  " ng-if="showTable=='exchangeRate'">
+            <tr>
+                <th></th>
+                <th>貨幣</th>
+                <th>現金買入</th>
+                <th>現金賣出</th>
+                <th>即期買入</th>
+                <th>即期賣出</th>
+                <th>銀行</th>
+                <th>銀行代碼</th>
+                <th>日期</th>
+            </tr>
+            <tbody>
+                <tr ng-repeat="exchangeRate in ExchangeRates" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+                    <td><div>{{$index+1}}</div></td>
+                    <td><div>{{exchangeRate.Currency}}</div></td>
+                    <td><div>{{exchangeRate.CashExchangeRateBuys}}</div></td>
+                    <td><div>{{exchangeRate.CashExchangeRateSells}}</div></td>
+                    <td><div>{{exchangeRate.SpotExchangeRateBuys}}</div></td>
+                    <td><div>{{exchangeRate.SpotExchangeRateSells}}</div></td>
+                    <td><div>{{exchangeRate.Bank}}</div></td>
+                    <td><div>{{exchangeRate.BankCode}}</div></td>
+                    <td><div>{{exchangeRate.Date |date: 'yyyy-MM-dd'}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered rounded-circle  " ng-show="showTable=='book'">
+            <thead>
+                <tr>
+                    <th>Action</th>
+                    <th ng-show="showMore">SeqNo</th>
+                    <th>index</th>
+                    <th>BookName</th>
+                    <th>Author</th>
+                    <th ng-show="showMore">Translator</th>
+                    <th>Publisher</th>
+                    <th ng-show="showMore">PublicationDate</th>
+                    <th>Language</th>
+                    <th ng-show="showMore">Pricing</th>
+                    <th ng-show="showMore">Currency</th>
+                    <th ng-show="showMore">Location</th>
+                    <th ng-show="showMore">Status</th>
+                    <th ng-show="showMore">StartDate</th>
+                    <th ng-show="showMore">EndDate</th>
+                    <th ng-show="showMore">Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class="'ngModify'">
+
+                    <td><input type="button" value="+" class="btn" ng-click="addData(inputData)"></td>
+                    <td ng-show="showMore"></td>
+                    <td></td>
+                    <td><input type="text" size="10" ng-model="inputData.BookName"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Author"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Translator"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Publisher"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.PublicationDate"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Language" ng-keydown="myKeyup($event)"></td>
+                    <td ng-show="showMore"><input type="number" size="10" ng-model="inputData.Pricing"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Currency"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Location"></td>
+                    <td ng-show="showMore"><input type="checkbox" size="1" ng-model="inputData.Status"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.StartDate"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.EndDate"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Owner"></td>
+
+                </tr>
+                <tr ng-repeat="book in Books" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+
+                    <td>
+                        <input type="button" ng-show="book.editMode" value="Done" class="btn" ng-click="editData(book)">
+                        <input type="image" src="/image/eye.png" onMouseOver="this.className = 'btn btn-info';" onMouseOut="this.className='btn';" class="btn" ng-click="goEditMode(book)">
+                        <input type="button" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom" value="-" class="btn btn-danger" ng-click="deleteData(book)">
+
+                    </td>
+                    <td ng-show="showMore"><div>{{ book.SeqNo}}</div></td>
+                    <td>{{$index+1}}</td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.BookName">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.BookName}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Author">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Author}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Translator">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Translator}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Publisher">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Publisher}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.PublicationDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.PublicationDate| date:'yyyy-MM-dd'}}</div>
+                    </td>
+                    <td>
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Language">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Language}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="number" size="10" ng-model="book.Pricing">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Pricing}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Currency">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Currency}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Location">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Location}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="checkbox" ng-model="book.Status">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Status}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.StartDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.StartDate|date:'MM/dd/yyyy @ h:mma'}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="datetime" size="10" ng-model="book.EndDate">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.EndDate|date:'MM/dd/yyyy  h:mma'}}</div>
+                    </td>
+                    <td ng-show="showMore">
+                        <div ng-show="showData(book)">
+                            <input type="text" size="10" ng-model="book.Owner">
+                        </div>
+                        <div ng-show="!showData(book)">{{ book.Owner}}</div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+
+        <table class="table table-bordered rounded-circle  " ng-show="showTable=='aboutSamgoGame'">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>腳色</th>
+                    <th>官職</th>
+                    <th>軍團</th>
+                    <th>戰力</th>
+                    <th>時間</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr ng-class="'ngModify'">
+                     <td><input type="button" value="+" class="btn" ng-click="addData(inputData)"></td>
+                    <td ng-show="showMore"></td>
+                    <td></td>
+                    <td><input type="text" size="10" ng-model="inputData.BookName"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Author"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Translator"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Publisher"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.PublicationDate"></td>
+                    <td><input type="text" size="10" ng-model="inputData.Language" ng-keydown="myKeyup($event)"></td>
+                    <td ng-show="showMore"><input type="number" size="10" ng-model="inputData.Pricing"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Currency"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Location"></td>
+                    <td ng-show="showMore"><input type="checkbox" size="1" ng-model="inputData.Status"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.StartDate"></td>
+                    <td ng-show="showMore"><input type="datetime" ng-model="inputData.EndDate"></td>
+                    <td ng-show="showMore"><input type="text" size="10" ng-model="inputData.Owner"></td>
+
+                </tr>-->
+                <tr ng-repeat="SamgoPower in SamgoPowers" ng-class-odd="'ngOdd'" ng-class-even="'ngEven'">
+
+                    <td><div>{{ SamgoPower.SeqNo}}</div></td>
+                    <td><div>{{ SamgoPower.Role}}</div></td>
+                    <td><div>{{ SamgoPower.Official}}</div></td>
+                    <td><div>{{ SamgoPower.Legion}}</div></td>
+                    <td><div>{{ SamgoPower.Power}}</div></td>
+                    <td><div>{{ SamgoPower.Time}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
+
+        <div ng-if="showTable=='aboutHistory'">
+            <pre>
+            這個網頁 只是想把過去學的一些做一個整合 不是單純放在GITHUB ，而是讓他以一個活的專案放著
+            目前就是一個很簡單的ANGULAR+ MVCAPI再加上AZURE空間形成的APISERVER
+            目前同時進行一個PYTHON 的API還有使用crontab去做的爬蟲並且搭配演算法
+            </pre>
+        </div>
+        <div ng-if="showTable=='aboutConnectUs'">
+
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="col">Phone</div>
+                <div class="col">0911578345</div>
+                <div class="w-100"></div>
+                <div class="col">Line</div>
+                <!--<div class="col"><iframe src="https://line.me/ti/p/yimuuM0iZh"></iframe></div>-->
+                <div class="col"><img src="../image/Qrcode/Line.jpg" /></div>
+                <div class="w-100"></div>
+                <div class="col">Wechat</div>
+                <!--<div class="col"><iframe src="https://u.wechat.com/IBWdGg-iDV-aDGAJFLDzeKI"></iframe></div>-->
+                <div class="col"><img src="../image/Qrcode/Wechat.jpg" /></div>
+                <div class="w-100"></div>
+                <div class="col">My info</div>
+                <div class="col"></div>
+                <div class="col"><img src="../image/Qrcode/MyInfo.png" /></div>
+</div>
+        </div>
+        <div ng-if="showTable=='aboutGoogleInfo'">
+
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="col">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.5635927867347!2d121.45620751369853!3d24.98095838399719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346802c5eab90b17%3A0xf8d0af12e17ecd1e!2zMjM25paw5YyX5biC5Zyf5Z-O5Y2A5riF5rC06LevOTjlt7cz5byEMjfomZ81!5e0!3m2!1szh-TW!2stw!4v1546051602338" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="col">新北市土城區清水路98巷3弄27號5樓</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,1335 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HerbMagicWebApi</name>
+    </assembly>
+    <members>
+        <member name="T:HerbMagicWebApi.SwaggerConfig">
+            <summary>
+            º~¶³
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.WebApiConfig">
+            <summary>
+            API說明
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:HerbMagicWebApi.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:HerbMagicWebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,HerbMagicWebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,HerbMagicWebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:HerbMagicWebApi.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},HerbMagicWebApi.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(HerbMagicWebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,HerbMagicWebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:HerbMagicWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HerbMagicWebApi.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HerbMagicWebApi.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.AddressHelper.#ctor(System.String)">
+            <summary>
+            地址組成：
+            1.郵遞區號: 3~5碼數字
+            2.縣市： xx 縣/市
+            3.鄉鎮市區：xx 鄉/鎮/市/區
+            4.其他：鄉鎮市區以後的部分
+            規則：開頭一定要是3或5個數字的郵遞區號，如果不是，解析不會出錯，但ZipCode為空
+            地址一定要有XX縣/市 + XX鄉/鎮/市/區 + 其他
+            </summary>
+            <param name="address"></param>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.Road">
+            
+            路
+            
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.City">
+            <summary>
+            縣市
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.District">
+            <summary>
+            鄉鎮市區
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.IsParseSuccessed">
+            <summary>
+            是否符合pattern規範
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.OrginalAddress">
+            <summary>
+            原始傳入的地址
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.Others">
+            <summary>
+            鄉鎮市區之後的地址
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Common.AddressHelper.ZipCode">
+            <summary>
+            郵遞區號
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.AddressHelper.ToString">
+            <summary>
+            組成完整的地址
+            </summary>
+            <returns>完整的地址</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Common.Emoji.LineEmoji">
+            <summary>
+            https://devdocs.line.me/files/emoticon.pdf
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.LineTemplate.ReturnTemplate.text(System.Collections.Generic.List{System.String})">
+            <summary>
+            https://developers.line.biz/media/messaging-api/sticker_list.pdf
+            </summary>
+            <param name="ls"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Common.MapperHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.MapperHelper.MapperProperties``2(``0)">
+            <summary>
+            Mapper All Properties IgnoreAllNonExisting extension
+            </summary>
+            <typeparam name="InPut"></typeparam>
+            <typeparam name="OutPut"></typeparam>
+            <param name="inPut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.MapperHelper.MapperProperties``2(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="InPut"></typeparam>
+            <typeparam name="OutPut"></typeparam>
+            <param name="inPut"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Common.DBHelper">
+            <summary>
+            ADO.NET 新增 刪除 修改之法 並且增加SP方法
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.Insert(System.String,System.String)">
+            <summary>
+            新增
+            </summary>
+            <param name="connect">連線</param>
+            <param name="qurey">新增指令</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.Update(System.String,System.String)">
+            <summary>
+            更新
+            </summary>
+            <param name="connect">連線</param>
+            <param name="qurey">更新指令</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.Delete(System.String,System.String)">
+            <summary>
+            刪除
+            </summary>
+            <param name="connect">連線</param>
+            <param name="qurey">刪除指令</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.GetValue``1(System.Data.DataRow,System.String)">
+            <summary>
+            資料轉換
+            </summary>
+            <typeparam name="T">給予不同回答型態</typeparam>
+            <param name="pRow">資料row</param>
+            <param name="v">欄位名稱</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.ExecSpNoneReturn(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Store Procedure 執行 不回傳
+            </summary>
+            <param name="connect">連線</param>
+            <param name="spName">SP 名稱</param>
+            <param name="lsp">SP 參數設定</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.ExecSp(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Store Procedure 執行 回傳影響數據的量
+            </summary>
+            <param name="connect">連線</param>
+            <param name="spName">SP 名稱</param>
+            <param name="lsp">SP 參數設定</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.ExecSpGetOutput(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Store Procedure 執行 取得回傳DATA
+            </summary>
+            <param name="connect">連線</param>
+            <param name="spName">SP 名稱</param>
+            <param name="lsp">SP 參數設定</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.ExecSpGetReturn(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Store Procedure 執行 回傳值
+            </summary>
+            <param name="connect">連線</param>
+            <param name="spName">SP 名稱</param>
+            <param name="lsp">SP 參數設定</param>
+        </member>
+        <member name="M:HerbMagicWebApi.Common.DBHelper.MainSp(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Data.CommandType,System.Boolean)">
+            <summary>
+            核心SP方法
+            </summary>
+            <param name="connect">連線</param>
+            <param name="query">名稱</param>
+            <param name="lsp">SP參數</param>
+            <param name="commandType">內容參數</param>
+            <param name="needReturn">是否回傳</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.atestController.Post(HerbMagicWebApi.Controllers.atestController.vasle)">
+            <summary>
+            只是測試而已
+            </summary>
+            <param name="value">測試資料</param>
+            <remarks>Sample request:
+                POST /Todo
+            
+                {   
+                    Id = 123456,
+                    Name = "yao",
+                    Age = 19
+                }
+            </remarks>
+            <example>GG</example>
+            <seealso cref="M:HerbMagicWebApi.Controllers.atestController.Put(System.Int32,System.String)"/>
+            <returns>回傳</returns>
+            <response code="204">成功轉向</response>
+        </member>
+        <member name="P:HerbMagicWebApi.Controllers.atestController.vasle.Id">
+            <summary>
+            id
+            </summary>
+            
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForArthur.CoreController.Post(HerbMagicWebApi.Controllers.ForArthur.SMSObject)">
+            <summary>
+            使用這家SMS通訊https://www.twilio.com/console/sms/settings/geo-permissions
+            </summary>
+            <param name="value">輸入要送的對象跟內容</param>
+        </member>
+        <member name="P:HerbMagicWebApi.Controllers.ForArthur.SMSObject.msg">
+            <summary>
+            簡訊主體
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Controllers.ForArthur.SMSObject.phone">
+            <summary>
+            手機號碼 EX  +886911578345 是我的手機
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForGovData.GovDataController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.GovDataController.GetGovDataByKeyword(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController">
+            <summary>
+            ISelect 3C
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.Index">
+            <summary>
+            ISelect3C Index
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.MixDataGrid(System.String)">
+            <summary>
+            MixDataGrid PartialView
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.MallDataGrid(System.String)">
+            <summary>
+             MallDataGrid PartialView
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.GovDataGrid(System.String)">
+            <summary>
+             GovDataGrid PartialView
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.GetDetail(System.String,System.String)">
+            <summary>
+            ISelcet 3C Energy Calculator Page
+            </summary>
+            <param name="keyWord"></param>
+            <param name="productModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.ISelect3CController.EnergyEfficiencyHandler(System.String,System.String)">
+            <summary>
+            Energy Efficiency Handler
+            </summary>
+            <param name="strEnergyEfficiency"></param>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForGovData.MixGovDataController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.MixGovDataController.GetMixGovDataByKeyword(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.MixGovDataController.GetSelect3CDataNumber(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForGovData.PchomePriceController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForGovData.PchomePriceController.GetPchomePriceByKeyword(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="keyWord"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForTom.BoardGameController">
+            <summary>
+            桌游區
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.BoardGameController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.BoardGameController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.BoardGameController.Get">
+            <summary>
+            列表桌遊
+            </summary>
+            <returns>桌遊的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.BoardGameController.Get(System.String)">
+            <summary>
+            列表桌遊 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.BoardGameController.Post(HerbMagicWebApi.Models.BookStoreModels.MainBoardGame)">
+            <summary>
+            增加桌遊
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.BoardGameController.Put(HerbMagicWebApi.Models.BookStoreModels.MainBoardGame)">
+            <summary>
+            修改桌遊資料
+            </summary>
+            <param name="value">修改的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.BoardGameController.Delete(HerbMagicWebApi.Models.BookStoreModels.MainBoardGame)">
+            <summary>
+            刪除桌遊
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ForTom.HospitalMaskController">
+            <summary>
+            桌游區
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.HospitalMaskController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.HospitalMaskController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.HospitalMaskController.Get">
+            <summary>
+            列表桌遊 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.SamgoController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.SamgoController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoController.Get">
+            <summary>
+            列表桌遊
+            </summary>
+            <returns>桌遊的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoController.Get(System.String)">
+            <summary>
+            列表桌遊 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoController.Post(HerbMagicWebApi.Models.SamgoModels.UserInfo)">
+            <summary>
+            增加桌遊
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoController.Put(HerbMagicWebApi.Models.SamgoModels.UserInfo)">
+            <summary>
+            修改桌遊資料
+            </summary>
+            <param name="value">修改的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoController.Delete(HerbMagicWebApi.Models.SamgoModels.UserInfo)">
+            <summary>
+            刪除桌遊
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.Get">
+            <summary>
+            列表桌遊
+            </summary>
+            <returns>桌遊的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.Get(System.String)">
+            <summary>
+            列表桌遊 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.Post(HerbMagicWebApi.Models.SamgoModels.UserPower)">
+            <summary>
+            增加桌遊
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.Put(HerbMagicWebApi.Models.SamgoModels.UserPower)">
+            <summary>
+            修改桌遊資料
+            </summary>
+            <param name="value">修改的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ForTom.SamgoPowerController.Delete(HerbMagicWebApi.Models.SamgoModels.UserPower)">
+            <summary>
+            刪除桌遊
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.BookStoreController">
+            <summary>
+            小丁書房
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.BookStoreController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.BookStoreController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.BookStoreController.Get">
+            <summary>
+            列表書名
+            </summary>
+            <returns>書的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.BookStoreController.Get(System.String)">
+            <summary>
+            列表書名 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.BookStoreController.Post(HerbMagicWebApi.Models.BookStoreModels.MainBook)">
+            <summary>
+            增加書
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.BookStoreController.Put(HerbMagicWebApi.Models.BookStoreModels.MainBook)">
+            <summary>
+            修改書資料
+            
+            </summary>
+            <param name="id"></param>
+            <param name="value">修改的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.BookStoreController.Delete(HerbMagicWebApi.Models.BookStoreModels.MainBook)">
+            <summary>
+            刪除書
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.checkController.Get">
+            <summary>
+            验证知识库request
+            </summary>
+            <param name="b"  Type="header"></param>
+            <remarks>
+            成功获得医师资讯
+            </remarks>
+            <response code="200">成功获得医师资讯</response>
+            <response code="403">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.doctorController">
+            <summary>
+            醫師
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.doctorController.Get(System.String)">
+            <summary>
+            获得该医师资讯
+            </summary>
+            <param name="id">user_phone - 该医师手机号码</param>
+            <remarks>
+            成功获得医师资讯
+            </remarks>
+            <response code="200">成功获得医师资讯</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.doctorController.Put(System.String,HerbMagicWebApi.Models.ObjectModels.DocObject)">
+            <summary>
+            修改该医师资讯(包含删除)
+            </summary>
+            <param name="id">_id - 该医师的 id</param>
+            <param name="body"></param>
+            <remarks>
+            更新成功
+            </remarks>
+            <response code="200">更新成功</response>
+            <response code="400">资料格式有误</response>
+            <response code="404">查无此用户</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.ExchangeRateController">
+            <summary>
+            匯率
+            </summary>
+            <remarks>匯率</remarks>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ExchangeRateController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary> 
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.ExchangeRateController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ExchangeRateController.Get">
+            <summary>
+            列表匯率
+            </summary>
+            <remarks>這一列方法都是查詢列表</remarks>
+            <response code="200">OK</response>
+            <response code="500">Server error</response>
+            <returns>匯率的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ExchangeRateController.Get(System.String)">
+            <summary>
+            列表匯率 單一seqno
+            </summary>
+            <remarks>這一列方法都是單一查詢</remarks>
+            <response code="200">OK</response>
+            <response code="500">Server error</response>
+            <returns>查詢特殊關鍵字</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ExchangeRateController.Post">
+            <summary>
+            增加匯率
+            </summary>
+            <remarks>這一列方法都是單一增加</remarks>
+            <param name="value">修改的資料</param>
+            <response code="200">OK</response>
+            <response code="500">Server error</response>
+            <returns>增加資料</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ExchangeRateController.Put(HerbMagicWebApi.Models.BookStoreModels.MainExchangeRate)">
+            <summary>
+            修改匯率資料
+            </summary>
+            <param name="value">修改的資料</param>
+            <remarks>這一列方法都是單一修改</remarks>
+            <response code="200">OK</response>
+            <response code="500">Server error</response>
+            <returns>修改資料</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.ExchangeRateController.Delete(HerbMagicWebApi.Models.BookStoreModels.MainExchangeRate)">
+            <summary>
+            刪除匯率
+            </summary>
+            <param name="value">修改的資料</param>
+            <remarks>這一列方法都是單一修改</remarks>
+            <response code="200">OK</response>
+            <response code="500">Server error</response>
+            <returns>修改資料</returns>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.HistoryController.connectionString">
+            <summary>
+            獨立案件 資料庫拉開
+            </summary>
+        </member>
+        <member name="F:HerbMagicWebApi.Controllers.HistoryController.TableName">
+            <summary>
+            對應資料庫的表格
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.HistoryController.Get">
+            <summary>
+            列表書名
+            </summary>
+            <returns>書的基本訊息</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.HistoryController.Get(System.String)">
+            <summary>
+            列表書名 單一seqno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.HistoryController.Post(HerbMagicWebApi.Models.BookStoreModels.MainHistory)">
+            <summary>
+            增加書
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.HistoryController.Put(HerbMagicWebApi.Models.BookStoreModels.MainHistory)">
+            <summary>
+            修改書資料
+            
+            </summary>
+            <param name="id"></param>
+            <param name="value">修改的資料</param>
+            <returns></returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.HistoryController.Delete(HerbMagicWebApi.Models.BookStoreModels.MainHistory)">
+            <summary>
+            刪除書
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.prescriptionController">
+            <summary>
+            就诊纪录
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.prescriptionController.Get(System.String)">
+            <summary>
+            查询单一就诊纪录
+            </summary>
+            <param name="id">_id - 就诊纪录 id</param>
+            <remarks>
+            成功获得就诊纪录资讯
+            </remarks>
+            <response code="200">成功获得就诊纪录资讯</response>
+            <response code="404">查无此就诊纪录</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.prescriptionController.Post(HerbMagicWebApi.Models.ObjectModels.PrescriptionObject)">
+            <summary>
+            新增单一就诊纪录
+            </summary>
+            <param name="body"></param>
+            <remarks>
+            OK
+            </remarks>
+            <response code="200">OK</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.prescriptionController.Put(System.String,HerbMagicWebApi.Models.ObjectModels.PrescriptionObject)">
+            <summary>
+            修改 (包含删除)
+            </summary>
+            <param name="id">_id - 该独家秘方 id</param>
+            <param name="body"></param>
+            <remarks>
+            更新成功
+            </remarks>
+            <response code="200">更新成功</response>
+            <response code="404">资料格式错误</response>
+            <response code="400">查无此资料</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="T:HerbMagicWebApi.Controllers.formulaController">
+            <summary>
+            秘方
+            </summary>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.formulaController.Get(System.String)">
+            <summary>
+            查询单一独家秘方
+            </summary>
+            <param name="id">_id - 该独家秘方 id</param>
+            <remarks>
+            成功获得独家秘方资讯
+            </remarks>
+            <response code="200">成功获得独家秘方资讯</response>
+            <response code="404">查无此独家秘方</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.formulaController.Post(HerbMagicWebApi.Models.ObjectModels.FormulaObject)">
+            <summary>
+            新增单一独家秘方
+            </summary>
+            <param name="body"></param>
+            <remarks>
+            创建成功
+            </remarks>
+            <response code="200">创建成功</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.formulaController.Put(System.String,System.String)">
+            <summary>
+            修改 (包含删除)
+            </summary>
+            <param name="id">_id - 该独家秘方 id</param>
+            <param name="body"></param>
+            <remarks>
+            更新到的新的独家秘方资讯
+            </remarks>
+            <response code="200">更新到的新的独家秘方资讯</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.orderController.Get(System.String)">
+            <summary>
+            获得该医师资讯
+            </summary>
+            <param name="order_id">订单的 id 号码</param>
+            <remarks>
+            成功获得医师资讯
+            </remarks>
+            <response code="200">成功获取该订单资讯</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.orderController.Post(HerbMagicWebApi.Models.ObjectModels.OrderObject)">
+            <summary>
+            建立新订单
+            </summary>
+            <param name="body"></param>
+            <remarks>
+            成功获得医师资讯
+            </remarks>
+            <response code="200">成功获取该订单资讯</response>
+            <response code="400">请求格式有误</response>
+            <response code="404"></response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.orderController.Put(System.String,HerbMagicWebApi.Models.ObjectModels.OrderObject)">
+            <summary>
+            修改该订单资讯
+            </summary>
+            <param name="order_id">订单的 id 号码</param>
+            <param name="body"></param>
+            <remarks>
+            更新成功
+            </remarks>
+            <response code="200">更新成功</response>
+            <response code="400">请求格式有误</response>
+            <response code="404">找不到该笔订单</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.userController.Get(System.String)">
+            <summary>
+            获得该使用者资讯
+            </summary>
+            <param name="id">user_phone(该使用者手机号码)</param>
+            <remarks>
+            成功获得用户资讯
+            </remarks>
+            <response code="200">成功获得用户资讯</response>
+            <response code="404">查无此用户</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="M:HerbMagicWebApi.Controllers.userController.Put(System.String,HerbMagicWebApi.Models.ObjectModels.UserObject)">
+            <summary>
+            修改该使用者资讯(包含删除
+            </summary>
+            <param name="id">使用者的 id</param>
+            <param name="body">所要查询的四诊记录的主症</param>
+            <remarks>
+            更新成功
+            </remarks>
+            <response code="200">更新成功</response>
+            <response code="400">资料格式有误</response>
+            <response code="404">查无此用户</response>
+            <response code="500">系统维护中</response>
+            <returns >HttpResponseMessage</returns>
+        </member>
+        <member name="P:HerbMagicWebApi.Models.BookStoreModels.IsReusable">
+            <summary>
+            您將需要在您 Web 的 Web.config 檔中設定此處理常式，
+            並且向 IIS 註冊該處理程式，才能使用它。如需詳細資訊，
+            請參閱下列連結: http://go.microsoft.com/?linkid=8101007
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Models.EnergyEfficiencyModels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Models.MixGovPcModels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Models.PchomePriceModels">
+            <summary>
+            Pchome data
+            </summary>
+        </member>
+        <member name="P:HerbMagicWebApi.Models.ContentProvider.type">
+            <summary>
+            external  line
+            </summary>
+        </member>
+        <member name="T:HerbMagicWebApi.Models.ObjectModels.Error">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

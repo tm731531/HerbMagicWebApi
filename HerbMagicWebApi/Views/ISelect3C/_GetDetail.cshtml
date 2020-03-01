@@ -1,0 +1,115 @@
+﻿@model HerbMagicWebApi.Models.EnergyEfficiencyModels
+
+<style>
+    .center {
+        position: relative;
+        top: 20px;
+        left: 20px;
+    }
+</style>
+<!-- Modal -->
+<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">我選擇計算</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  text-right">平台售價：</div>
+                        <div class="col-md-6 col-sm-6 text-left">@Model.originprice 元</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  text-right">日電費(24h)：</div>
+                        <div class="col-md-6 col-sm-6 text-left">@Model.dayCost.ToString("###0.###") 元</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  text-right">月電費(30日)：</div>
+                        <div class="col-md-6 col-sm-6 text-left">@Model.monthCost.ToString("###0.###") 元</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12" align="center"><p>1度電費  ：  4元</p></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  text-right">效率等級：</div>
+                        <div class="col-md-6 col-sm-6 text-left">@Model.efficiency_rating</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6  text-right">最低能源效率基準：</div>
+                        <div class="col-md-6 col-sm-6 text-left">@Model.efficiency_benchmark</div>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(Model.EER))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">能源效率值EER：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.EER</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.CSPF))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">冷氣季節性能因數CSPF：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.CSPF</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.rated_dehumidification_capacity))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">額定除濕能力：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.rated_dehumidification_capacity</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.energy_factor_value))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">能源因數值：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.energy_factor_value</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.est24))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">每24小時標準化備用損失：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.est24</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.hot_water_system_storage_tank_capacity_indication_value))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">熱水系統貯水桶容量標示值：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.hot_water_system_storage_tank_capacity_indication_value</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.warm_water_system_storage_tank_capacity_indication_value))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">溫水貯水桶容量標示值：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.warm_water_system_storage_tank_capacity_indication_value</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.ice_water_system_storage_tank_capacity_indication_value))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">冰水貯水桶容量標示值：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.ice_water_system_storage_tank_capacity_indication_value</div>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.effective_internal_volume))
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 text-right">有效內容積：</div>
+                            <div class="col-md-6 col-sm-6 text-left">@Model.effective_internal_volume</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

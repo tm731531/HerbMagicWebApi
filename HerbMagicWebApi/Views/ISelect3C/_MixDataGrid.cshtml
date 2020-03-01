@@ -1,0 +1,26 @@
+﻿@model IEnumerable<HerbMagicWebApi.Models.MixGovPcModels>
+@(Html
+            .Grid(Model)
+            .Build(columns =>
+            {
+                columns.Add(model => model.brand_name).Titled("品牌");
+                columns.Add(model => model.product_model).Css("clickModel").Filterable(true).Titled("型號");
+                columns.Add(model => model.labeling_company).Titled("廠商");
+                columns.Add(model => model.annual_power_consumption_degrees_dive_year).Titled("年耗電量(度/年)");
+                columns.Add(model => model.from_date_of_expiration.ToString("yyyy/MM/dd")).Titled("節能認證起始日").Sortable(true);
+                columns.Add(model => model.pics).Titled("圖片").Encoded(false).Sortable(false).Filterable(false);
+            })
+            .Empty("No data found")
+            .Id("MixData-ajax-grid")
+            .Pageable(pager =>
+            {
+                pager.PagesToDisplay = 10;
+                pager.RowsPerPage = 8;
+            })
+            .Css("bolded msFont")
+            .Filterable()
+            .Sortable()
+            //.WithFooter("__MixGridFooter")
+)
+
+

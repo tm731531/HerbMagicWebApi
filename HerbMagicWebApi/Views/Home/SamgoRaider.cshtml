@@ -1,0 +1,553 @@
+﻿@{
+    ViewBag.Title = "SamgoRaider";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>三國志手遊筆記</h2>
+<table class="table table-bordered rounded-circle  ">
+    <tr>
+        <td><a ng-click="showgrid='1'">大殿等級</a></td>
+        <td><a ng-click="showgrid='2'">攻略城池</a></td>
+        <td><a ng-click="showgrid='3'">武將簡介</a></td>
+        <td><a ng-click="showgrid='4'">資源商</a></td>
+    </tr>
+</table>
+<hr>
+<table class="table table-bordered rounded-circle  " ng-show="showgrid=='1'">
+    <tr>
+        <td>
+            大殿等級
+        </td>
+        <td>
+            需求
+        </td>
+        <td>
+            大殿等級
+        </td>
+        <td>
+            需求
+        </td>
+    </tr>
+    <tr>
+        <td>
+            2級→3級
+        </td>
+        <td>
+            2級伐木場
+
+        </td>
+        <td>
+            4級
+
+        </td>
+        <td>
+            3級採石場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            5級
+
+        </td>
+        <td>
+            4級冶煉廠
+
+        </td>
+        <td>
+            6級
+
+        </td>
+        <td>
+            5級倉庫
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            7級
+
+        </td>
+        <td>
+            6級兵營、6級農田
+
+        </td>
+        <td>
+            8級
+
+        </td>
+        <td>
+            7級民居
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            9級
+
+        </td>
+        <td>
+            8級城牆、8級採石場
+
+        </td>
+        <td>
+            10級
+
+        </td>
+        <td>
+            10級計略府
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            11級
+
+        </td>
+        <td>
+            10級冶煉廠、10級冶煉廠
+
+        </td>
+        <td>
+            12級
+
+        </td>
+        <td>
+            11級民居
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            13級
+
+        </td>
+        <td>
+            12級城牆、12級採石場
+
+        </td>
+        <td>
+            14級
+
+        </td>
+        <td>
+            13及技法所、13級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            15級
+
+        </td>
+        <td>
+            14級兵營、14級農田
+
+        </td>
+        <td>
+            16級
+
+        </td>
+        <td>
+            15級軍械所、15級伐木場、15級技法所
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            17級
+
+        </td>
+        <td>
+            16級民居
+
+        </td>
+        <td>
+            18級
+
+        </td>
+        <td>
+            17級計略府、17級冶煉廠
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            19級
+
+        </td>
+        <td>
+            18級城牆、18級採石場
+
+        </td>
+        <td>
+            20級
+
+        </td>
+        <td>
+            19級兵營、19級農田
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            21級
+
+        </td>
+        <td>
+            20級軍械所、20級技法所、20級伐木場
+
+        </td>
+        <td>
+            22級
+
+        </td>
+        <td>
+            21級技法所、21級伐木所
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            23級
+
+        </td>
+        <td>
+            22級民居
+
+        </td>
+        <td>
+            24級
+
+        </td>
+        <td>
+            23級計略府、23級冶煉廠
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            25級
+
+        </td>
+        <td>
+            24級鑄幣所、24級民居
+
+        </td>
+        <td>
+            26級
+
+        </td>
+        <td>
+            25級城牆、25級採石場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            27級
+
+        </td>
+        <td>
+            26級兵營、26級農田
+
+        </td>
+        <td>
+            28級
+
+        </td>
+        <td>
+            27級技法所、27級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            29級
+
+        </td>
+        <td>
+            28級民居
+
+        </td>
+        <td>
+            30級
+
+        </td>
+        <td>
+            29級計略府、29級冶煉廠
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            31級
+
+        </td>
+        <td>
+            30級城牆、30級採石場
+
+        </td>
+        <td>
+            32級
+
+        </td>
+        <td>
+            31級軍械所、31級技法所、31級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            33級
+
+        </td>
+        <td>
+            32級兵營、32級農田
+
+        </td>
+        <td>
+            34級
+
+        </td>
+        <td>
+            33級技法所、33級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            35級
+
+        </td>
+        <td>
+            34級民居
+
+        </td>
+        <td>
+            36級
+
+        </td>
+        <td>
+            35級計略府、35級冶煉廠
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            37級
+
+        </td>
+        <td>
+            36級城牆、36級採石場
+
+        </td>
+        <td>
+            38級
+
+        </td>
+        <td>
+            37級軍械所、37級技法所、37級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            39級
+
+        </td>
+        <td>
+            38級兵營、38級農田
+
+        </td>
+        <td>
+            40級
+
+        </td>
+        <td>
+            39級技法所、39級伐木場
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            41級
+
+        </td>
+        <td>
+            40級民居
+
+        </td>
+        <td>
+            42級
+
+        </td>
+        <td>
+            41級農場、41級兵營
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            43級
+
+        </td>
+        <td>
+            42級採石場、42級城牆
+
+        </td>
+        <td>
+            44級
+
+        </td>
+        <td>
+            43級軍械所
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            45級
+
+        </td>
+        <td>
+            44級農場、44級兵營
+
+        </td>
+        <td>
+            46級
+
+        </td>
+        <td>
+            45級鑄幣所
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            47級
+
+        </td>
+        <td>
+            46級民居
+
+        </td>
+        <td>
+            48級
+
+        </td>
+        <td>
+            47級農場、47級兵營
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            49級
+
+        </td>
+        <td>
+            48級採石場、48級城牆
+
+        </td>
+        <td>
+            50級
+
+        </td>
+        <td>
+            49級軍械所
+        </td>
+    </tr>
+</table>
+
+<div ng-show="showgrid=='2'">
+    打城池將遊戲打個45度角導正
+    1.3.5.7 切齊城邊
+    <table class="table table-bordered rounded-circle  ">
+
+        <tr>
+            <td>8</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>郡守(4) 城池(3) </td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+    <hr>
+    <img src="~/image/SamgoGame/War/position.jpg" />
+    <hr>
+    <table class="table table-bordered rounded-circle  ">
+
+        <tr>
+            <td>8</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>郡守(4) 城池(3) </td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+        </tr>
+    </table>
+</div>
+<div ng-show="showgrid=='3'">
+    <pre>
+紫將
+荀攸:對隨機4支敵軍造成每秒智力%的計策傷害，持續8秒。
+朱桓:對當前目標造成每秒統率%的普通傷害，持續6秒。
+徐盛:本場不再獲得怒氣，使自身造成的傷害提高%
+張紘:對隨機2支敵軍造成每秒智力%的計策傷害，持續8秒。
+程普:對當前目標造成統率%的普通傷害，並有%的機率使其暈眩4秒。
+祝融:對隨機3支敵軍造成武力%的普通傷害，並使其每秒受到武力%的普通傷害，持續4秒。
+樂進:本場不再獲得怒氣，使自己受到的傷害降低%。
+盧植:為全體友軍恢復統率%的兵力。
+張任:對隨機1支敵軍造成統率%的普通傷害，並有%概率使其內訌3秒。
+呂玲綺:對當前敵軍造成武力%的普通傷害。
+曹彰:對當前敵軍造成武力%的普通傷害，並有%概率使其怯戰4秒。
+于禁:使自身持續恢復統率的%兵力，持續4秒。
+關興:為自身生成武力%的護盾，吸收受到的傷害，持續4秒。
+</pre>
+
+</div>
+<div ng-show="showgrid=='4'">
+
+    <table class="table table-bordered rounded-circle  ">
+
+        <tr>
+            <td>資源商</td>
+            <td>價格</td>
+        </tr>
+        <tr>
+            <td>
+                <pre>wechat id ： ixdsxq888  （眼镜仔）
+            line id ：dhdt1428 </pre>
+            </td>
+            <td>
+                <pre>匯率: 500人民幣 12E
+            2000台幣  10E</pre>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre>wechat id ： sanguozhitt  （三國志掏掏）</pre>
+            </td>
+            <td>
+                <pre>匯率: 55人民幣 1E</pre>
+            </td>
+        </tr>
+    </table>
+</div>
